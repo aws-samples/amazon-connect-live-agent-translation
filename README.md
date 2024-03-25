@@ -44,28 +44,27 @@ The steps below will guide you through the process of deploying a multilingual c
 
 ##  Section 1: Deploy [AWS CloudFormation](https://aws.amazon.com/cloudformation/) templates  
 
-1. Navigate to the GitHub repo for the template.
-    1. Clone the repo
-    2. Navigate to the repository folder on your local machine
-        1.  Create a .zip of the following files/folders:
-            1. cloudformation/asset.7b1f3c122a53128c55239bc2e97800299bcce83e3fb7394b79ed0b35af5757ee/mlcc-transcribe-polly.py
-    3. [Create a new Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html) and upload the folders named CloudFormation and CCP from the cloned repo.
-2. Navigate to the CloudFormation dashboard within the AWS console and [create a CloudFormation stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) using the file named “MultiLingualCC.yaml.” The following parameters are needed to be provided for the stack to launch.
-    1. **Stack name** – The stack name is an identifier that helps you find a particular stack from a list of stacks. A stack name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and can't be longer than 128 characters.
-    2. Amazon Connect instance ID (Ensure that it is entered accurately in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
-    3. **Call audio bucket name** – Enter the (globally unique) name you would like to use for the Amazon S3 bucket where you will store the audio files and the sample contact flow. This template will fail to deploy if the bucket name you choose is currently in use.
-    4. **Website bucket name** – Enter the (globally unique) name you would like to use for the Amazon S3 bucket where you will store the website assets and the sample contact flow. This template will fail to deploy if the bucket name you choose is currently in use.
-    5. **Resources bucket** – This is the bucket you created in step 1c.
-    6. **audioFilePrefix** – The Amazon S3 prefix where the audio files will be saved (must end in "/").
-    7. **CloudFront Price Class** – Specify the CloudFront price class. See [pricing details for more information](https://aws.amazon.com/cloudfront/pricing/%20).
-    8. **Compute type** – Specify whether to use [AWS Fargate](https://aws.amazon.com/fargate/) or Lambda for transcribing call audio to text. The solution, by default, uses a Lambda function to transcribe call audio consumed from [Amazon Kinesis Video Streams](https://aws.amazon.com/kinesis/video-streams/?amazon-kinesis-video-streams-resources-blog.sort-by=item.additionalFields.createdDate&amazon-kinesis-video-streams-resources-blog.sort-order=desc). Lambda has a maximum run time of 15 minutes per invocation, whereas Fargate has no such limits and can run as long as the call is connected.
-    9. **rawAudioUploadPrefix** – The Amazon S3 prefix where raw/wav (audio/L16; mono; 8 kHz) audio recordings may be uploaded if you want to process an audio file compared to making a phone call and streaming from Kinesis Video Streams. This parameter is used for testing or for real-time transcription of audio files. This will only work with single-channel files (mono).
-    10. **sessionDuration** – The maximum duration of the role session (in seconds). You can give a value from 900 seconds (15 minutes) to 3,600 seconds (1 hour). This is the maximum call duration before the customer interaction must be processed.
-3. Create the stack.
-4. After the stack is successfully launched, note the following outputs. It could take a few minutes for the stack to launch the solution.
+1. Clone the repo
+2. Navigate to the repository folder on your local machine
+3. Create a .zip of the following files/folders:
+    1. cloudformation/asset.7b1f3c122a53128c55239bc2e97800299bcce83e3fb7394b79ed0b35af5757ee/mlcc-transcribe-polly.py
+4. [Create a new Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html) and upload the folders named CloudFormation and CCP from the cloned repo.
+5. Navigate to the CloudFormation dashboard within the AWS console and [create a CloudFormation stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) using the file named “MultiLingualCC.yaml.” The following parameters are needed to be provided for the stack to launch.
+    * **Stack name** – The stack name is an identifier that helps you find a particular stack from a list of stacks. A stack name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and can't be longer than 128 characters.
+    * Amazon Connect instance ID (Ensure that it is entered accurately in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+    * **Call audio bucket name** – Enter the (globally unique) name you would like to use for the Amazon S3 bucket where you will store the audio files and the sample contact flow. This template will fail to deploy if the bucket name you choose is currently in use.
+    * **Website bucket name** – Enter the (globally unique) name you would like to use for the Amazon S3 bucket where you will store the website assets and the sample contact flow. This template will fail to deploy if the bucket name you choose is currently in use.
+    * **Resources bucket** – This is the bucket you created in step 1c.
+    * **audioFilePrefix** – The Amazon S3 prefix where the audio files will be saved (must end in "/").
+    * **CloudFront Price Class** – Specify the CloudFront price class. See [pricing details for more information](https://aws.amazon.com/cloudfront/pricing/%20).
+    * **Compute type** – Specify whether to use [AWS Fargate](https://aws.amazon.com/fargate/) or Lambda for transcribing call audio to text. The solution, by default, uses a Lambda function to transcribe call audio consumed from [Amazon Kinesis Video Streams](https://aws.amazon.com/kinesis/video-streams/?amazon-kinesis-video-streams-resources-blog.sort-by=item.additionalFields.createdDate&amazon-kinesis-video-streams-resources-blog.sort-order=desc). Lambda has a maximum run time of 15 minutes per invocation, whereas Fargate has no such limits and can run as long as the call is connected.
+    * **rawAudioUploadPrefix** – The Amazon S3 prefix where raw/wav (audio/L16; mono; 8 kHz) audio recordings may be uploaded if you want to process an audio file compared to making a phone call and streaming from Kinesis Video Streams. This parameter is used for testing or for real-time transcription of audio files. This will only work with single-channel files (mono).
+    * **sessionDuration** – The maximum duration of the role session (in seconds). You can give a value from 900 seconds (15 minutes) to 3,600 seconds (1 hour). This is the maximum call duration before the customer interaction must be processed.
+6. Create the stack.
+7. After the stack is successfully launched, note the following outputs. It could take a few minutes for the stack to launch the solution.
     1. **cloudfrontEndpoint** – This is the CloudFront URL you will use to access the agent portal. You can find this in the **Output** tab for the stack.
-5. Create a lambda layer by cloning and following up the instructions on the following repository  <https://github.com/amazon-connect/amazon-connect-audio-utils/tree/master>  Keep in mind that docker is required for this step. 
-6. Add the layer to the lambda function with the following name mlcc-Transcribe-Polly
+8. Create a lambda layer by cloning and following up the instructions on the following repository  <https://github.com/amazon-connect/amazon-connect-audio-utils/tree/master>  Keep in mind that docker is required for this step. 
+9. Add the layer to the lambda function with the following name mlcc-Transcribe-Polly
 
 
 
