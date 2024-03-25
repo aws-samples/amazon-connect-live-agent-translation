@@ -1,7 +1,7 @@
 
 ## Solution overview
 
-This walkthrough depicts an AWS Cloud-based solution that supports  organizations in providing near real-time translation  support through [Amazon Connect](https://aws.amazon.com/connect/), [Amazon Transcribe](https://aws.amazon.com/transcribe/), and serverless code through [AWS Lambda](https://aws.amazon.com/lambda/). Translations that would take hours to complete manually are performed in moments and read back, in life-like speech, and in a member’s chosen language through [Amazon Polly](https://aws.amazon.com/polly/). Figure 1 is an architectural diagram of the solution.
+This walkthrough depicts an AWS Cloud-based solution that supports  organizations in providing near real-time translation  support through [Amazon Connect](https://aws.amazon.com/connect/), [Amazon Transcribe](https://aws.amazon.com/transcribe/), and serverless code through [AWS Lambda](https://aws.amazon.com/lambda/). Translations that would take hours to complete manually are performed in moments and read back, in life-like speech, and in a member’s chosen language through [Amazon Polly](https://aws.amazon.com/polly/). 
 
 ![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/img/Architecture.jpg)
 
@@ -65,7 +65,6 @@ The steps below will guide you through the process of deploying a multilingual c
 2. Select the telephone number you claimed and assign the contact flow “mlccKvsStream,” as shown in Figure 2.
 
 ![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/img/AmazonConnectContactFlowAssignment.jpg)
-Figure2: Screenshot of Amazon Connect contact flow assignment._
 
 
 ## Section 3: Testing  
