@@ -80,7 +80,3 @@ Figure2: Screenshot of Amazon Connect contact flow assignment._
 ## Conclusion
 
 This walkthrough deploys a multilingual contact center that allows callers to talk in their preferred language without requiring the state to hire agents to cover all the languages.
-
-AWS is ready to support Medicaid agencies as they transform to meet COVID-19 Public Health Emergency (PHE) unwinding efforts. [Contact the AWS Public Sector Team to learn more](https://aws.amazon.com/government-education/contact/?trkCampaign=ps&trk=ps_blog_body).
-
-Health and human services agencies across the country are using the power of AWS to unlock their data, improve citizen experience, and deliver better outcomes. Learn more at [Health and Human Services Cloud Resources](https://aws.amazon.com/stateandlocal/health-and-human-services/cloud-resources/?awsm.page-health-and-human-services-experts-all=1). Learn how governments use AWS to innovate for their constituents, design engaging constituent experiences, and more by visiting the [AWS Cloud for State and Local Governments](https://aws.amazon.com/stateandlocal/) hub.
