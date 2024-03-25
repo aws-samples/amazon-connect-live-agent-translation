@@ -12,7 +12,7 @@ In this post, we will explore how to build a multilingual contact center that ca
 
 This walkthrough depicts an AWS Cloud-based solution that supports public sector organizations in providing near real-time translation chat support through [Amazon Connect](https://aws.amazon.com/connect/), [Amazon Transcribe](https://aws.amazon.com/transcribe/), and serverless code through [AWS Lambda](https://aws.amazon.com/lambda/). Translations that would take hours to complete manually are performed in moments and read back, in life-like speech, and in a member’s chosen language through [Amazon Polly](https://aws.amazon.com/polly/). Figure 1 is an architectural diagram of the solution.
 
-![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/Architecture.jpg)
+![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/img/Architecture.jpg)
 
 _Figure 1. Technical architecture of the multilingual contact center solution described in this post._ ![Technical architecture of the multiLingual contact center quickstart solution. ]
 
@@ -73,7 +73,7 @@ The steps below will guide you through the process of deploying a multilingual c
 1. Log in to the Amazon Connect instance using the admin user you created while launching the instance.
 2. Select the telephone number you claimed and assign the contact flow “mlccKvsStream,” as shown in Figure 2.
 
-![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/AmazonConnectContactFlowAssignment.jpg)
+![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/img/AmazonConnectContactFlowAssignment.jpg)
 _![Amazon Connect contact flow assignment.]Figure2: Screenshot of Amazon Connect contact flow assignment._
 
 
