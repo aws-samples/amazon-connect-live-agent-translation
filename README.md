@@ -42,7 +42,7 @@ The steps below will guide you through the process of deploying a multilingual c
 4. [Create a new Amazon S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html) and upload the folders named CloudFormation and CCP from the cloned repo.
 5. Navigate to the CloudFormation dashboard within the AWS console and [create a CloudFormation stack](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-console-create-stack.html) using the file named “MultiLingualCC.yaml.” The following parameters are needed to be provided for the stack to launch.
     * **Stack name** – The stack name is an identifier that helps you find a particular stack from a list of stacks. A stack name can contain only alphanumeric characters (case-sensitive) and hyphens. It must start with an alphabetic character and can't be longer than 128 characters.
-    * Amazon Connect instance ID (Ensure that it is entered accurately in the format xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx).
+    * Amazon Connect instance ARN.
     * **Call audio bucket name** – Enter the (globally unique) name you would like to use for the Amazon S3 bucket where you will store the audio files and the sample contact flow. This template will fail to deploy if the bucket name you choose is currently in use.
     * **Website bucket name** – Enter the (globally unique) name you would like to use for the Amazon S3 bucket where you will store the website assets and the sample contact flow. This template will fail to deploy if the bucket name you choose is currently in use.
     * **Resources bucket** – This is the bucket you created in step 1c.
