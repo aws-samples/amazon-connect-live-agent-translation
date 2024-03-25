@@ -74,7 +74,7 @@ The steps below will guide you through the process of deploying a multilingual c
 2. Select the telephone number you claimed and assign the contact flow “mlccKvsStream,” as shown in Figure 2.
 
 ![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/img/AmazonConnectContactFlowAssignment.jpg)
-_![Amazon Connect contact flow assignment.]Figure2: Screenshot of Amazon Connect contact flow assignment._
+Figure2: Screenshot of Amazon Connect contact flow assignment._
 
 
 ## Section 3: Testing  
