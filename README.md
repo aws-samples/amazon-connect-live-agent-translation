@@ -1,12 +1,3 @@
-# Building a multilingual contact center for Medicaid agencies on AWS
-
-One of the biggest constraints in providing equitable access to care is the language barrier between providers and the patients they serve. For Medicaid agency call centers, there aren’t enough agents to support communication in all the languages requested by a state government.
-
-Some states want to support nearly 20 languages in the call center but have agents who speak only two or three languages. The traditional approach of recording voices is expensive and also hampers the state’s ability to quickly change the messaging as appropriate for each member’s concerns. Relying on manual methods to record and create content in different languages can hinder the timeliness of implementation. The translation services offered in several Medicaid agency call centers add several hours of wait time for those seeking care.
-&nbsp;
-However, there’s a simple alternative. Agencies can use artificial intelligence (AI) and omnichannel contact center solutions from [Amazon Web Services (AWS)](https://aws.amazon.com/) to create a multilingual contact center that helps break down the language barrier between Medicaid members and call center agents.
-&nbsp;
-In this post, we will explore how to build a multilingual contact center that can provide near real-time assistance for a non-English-speaking constituent from an English-speaking agent.
 
 ## Solution overview
 
