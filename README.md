@@ -1,7 +1,7 @@
 
 ## Solution overview
 
-This walkthrough depicts an AWS Cloud-based solution that supports public sector organizations in providing near real-time translation chat support through [Amazon Connect](https://aws.amazon.com/connect/), [Amazon Transcribe](https://aws.amazon.com/transcribe/), and serverless code through [AWS Lambda](https://aws.amazon.com/lambda/). Translations that would take hours to complete manually are performed in moments and read back, in life-like speech, and in a member’s chosen language through [Amazon Polly](https://aws.amazon.com/polly/). Figure 1 is an architectural diagram of the solution.
+This walkthrough depicts an AWS Cloud-based solution that supports  organizations in providing near real-time translation  support through [Amazon Connect](https://aws.amazon.com/connect/), [Amazon Transcribe](https://aws.amazon.com/transcribe/), and serverless code through [AWS Lambda](https://aws.amazon.com/lambda/). Translations that would take hours to complete manually are performed in moments and read back, in life-like speech, and in a member’s chosen language through [Amazon Polly](https://aws.amazon.com/polly/). Figure 1 is an architectural diagram of the solution.
 
 ![alt text](https://github.com/aws-samples/amazon-connect-live-agent-translation/blob/main/img/Architecture.jpg)
 
