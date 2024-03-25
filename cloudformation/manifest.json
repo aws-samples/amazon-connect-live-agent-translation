@@ -1,0 +1,196 @@
+{
+  "version": "21.0.0",
+  "artifacts": {
+    "mlcc.assets": {
+      "type": "cdk:asset-manifest",
+      "properties": {
+        "file": "mlcc.assets.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+      }
+    },
+    "mlcc": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://329280318374/us-west-2",
+      "properties": {
+        "templateFile": "mlcc.template.json",
+        "validateOnSynth": false,
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::329280318374:role/cdk-hnb659fds-deploy-role-329280318374-us-west-2",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::329280318374:role/cdk-hnb659fds-cfn-exec-role-329280318374-us-west-2",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-329280318374-us-west-2/c086748f0dab632486e724cd8eeae10307cf9297cfe66202126e6c7bb214183d.json",
+        "requiresBootstrapStackVersion": 6,
+        "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
+        "additionalDependencies": [
+          "mlcc.assets"
+        ],
+        "lookupRole": {
+          "arn": "arn:${AWS::Partition}:iam::329280318374:role/cdk-hnb659fds-lookup-role-329280318374-us-west-2",
+          "requiresBootstrapStackVersion": 8,
+          "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
+        }
+      },
+      "dependencies": [
+        "mlcc.assets"
+      ],
+      "metadata": {
+        "/mlcc/mlcc/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mlcc76FCAE36"
+          }
+        ],
+        "/mlcc/mlcc/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mlccPolicyAE31D9D3"
+          }
+        ],
+        "/mlcc/agenthold": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "agenthold"
+          }
+        ],
+        "/mlcc/customerhold": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "customerhold"
+          }
+        ],
+        "/mlcc/agentwhisperflow": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "agentwhisperflow"
+          }
+        ],
+        "/mlcc/kvs": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "kvs"
+          }
+        ],
+        "/mlcc/lambda-layer/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "lambdalayerAEB0E7A7"
+          }
+        ],
+        "/mlcc/mlcc-function/ServiceRole/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mlccfunctionServiceRole5FC96A9F"
+          }
+        ],
+        "/mlcc/mlcc-function/ServiceRole/DefaultPolicy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mlccfunctionServiceRoleDefaultPolicy96C7D570"
+          }
+        ],
+        "/mlcc/mlcc-function/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mlccfunctionC4C18706"
+          }
+        ],
+        "/mlcc/mlcc-function/amazon-connect-invocation": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "mlccfunctionamazonconnectinvocation6E801BD8"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigateway92A53BC5"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Deployment/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayDeployment2F20BACBa377609bbf61abc4d8fb533bc80c8a90"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/DeploymentStage.prod/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayDeploymentStageprodCB9CB861"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Endpoint": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayEndpoint594AE560"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/{proxy+}/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayproxyCE5006C2"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/{proxy+}/ANY/ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayproxyANYApiPermissionmlccreferralsapigatewayD8EC84B5ANYproxy2FFE22BD"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/{proxy+}/ANY/ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayproxyANYApiPermissionTestmlccreferralsapigatewayD8EC84B5ANYproxy226EB6A2"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/{proxy+}/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayproxyANYC32C9E77"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/ANY/ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayANYApiPermissionmlccreferralsapigatewayD8EC84B5ANY024085F8"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/ANY/ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayANYApiPermissionTestmlccreferralsapigatewayD8EC84B5ANYD061691C"
+          }
+        ],
+        "/mlcc/referrals-api-gateway/Default/ANY/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referralsapigatewayANY6ABC6953"
+          }
+        ],
+        "/mlcc/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata"
+          }
+        ],
+        "/mlcc/BootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "BootstrapVersion"
+          }
+        ],
+        "/mlcc/CheckBootstrapVersion": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CheckBootstrapVersion"
+          }
+        ]
+      },
+      "displayName": "mlcc"
+    },
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    }
+  }
+}

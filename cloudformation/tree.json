@@ -1,0 +1,946 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "mlcc": {
+        "id": "mlcc",
+        "path": "mlcc",
+        "children": {
+          "mlcc": {
+            "id": "mlcc",
+            "path": "mlcc/mlcc",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "mlcc/mlcc/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::S3::Bucket",
+                  "aws:cdk:cloudformation:props": {
+                    "versioningConfiguration": {
+                      "status": "Enabled"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.CfnBucket",
+                  "version": "2.53.0"
+                }
+              },
+              "Policy": {
+                "id": "Policy",
+                "path": "mlcc/mlcc/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "mlcc/mlcc/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::S3::BucketPolicy",
+                      "aws:cdk:cloudformation:props": {
+                        "bucket": {
+                          "Ref": "mlcc76FCAE36"
+                        },
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:GetObject",
+                                "s3:ListBucket"
+                              ],
+                              "Condition": {
+                                "StringEquals": {
+                                  "aws:SourceAccount": "329280318374",
+                                  "aws:SourceArn": "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662"
+                                }
+                              },
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "connect.amazonaws.com"
+                              },
+                              "Resource": [
+                                {
+                                  "Fn::GetAtt": [
+                                    "mlcc76FCAE36",
+                                    "Arn"
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      {
+                                        "Fn::GetAtt": [
+                                          "mlcc76FCAE36",
+                                          "Arn"
+                                        ]
+                                      },
+                                      "/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.CfnBucketPolicy",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.BucketPolicy",
+                  "version": "2.53.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3.Bucket",
+              "version": "2.53.0"
+            }
+          },
+          "agenthold": {
+            "id": "agenthold",
+            "path": "mlcc/agenthold",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Connect::ContactFlow",
+              "aws:cdk:cloudformation:props": {
+                "content": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "{\"Version\":\"2019-10-30\",\"StartAction\":\"2354e0c5-f131-49ab-a055-8a6268577892\",\"Metadata\":{\"entryPointPosition\":{\"x\":20,\"y\":20},\"ActionMetadata\":{\"2354e0c5-f131-49ab-a055-8a6268577892\":{\"position\":{\"x\":478.40000000000003,\"y\":68.8},\"audio\":[]}}},\"Actions\":[{\"Parameters\":{\"Messages\":[{\"Media\":{\"Uri\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "mlcc76FCAE36",
+                          "WebsiteURL"
+                        ]
+                      },
+                      "/customerprompts/$.Attributes.ContactId$.Attributes.wav\",\"SourceType\":\"S3\",\"MediaType\":\"Audio\"}},{\"SSML\":\"<speak>\\n<break time=\\\"3s\\\"/>\\n</speak>\"}]},\"Identifier\":\"2354e0c5-f131-49ab-a055-8a6268577892\",\"Type\":\"MessageParticipantIteratively\",\"Transitions\":{}}]}"
+                    ]
+                  ]
+                },
+                "instanceArn": "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662",
+                "name": "mlccagentholdflow",
+                "type": "AGENT_HOLD",
+                "description": "Multi Lingual Contact Center "
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_connect.CfnContactFlow",
+              "version": "2.53.0"
+            }
+          },
+          "customerhold": {
+            "id": "customerhold",
+            "path": "mlcc/customerhold",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Connect::ContactFlow",
+              "aws:cdk:cloudformation:props": {
+                "content": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "{\"Version\":\"2019-10-30\",\"StartAction\":\"2354e0c5-f131-49ab-a055-8a6268577892\",\"Metadata\":{\"entryPointPosition\":{\"x\":20,\"y\":20},\"ActionMetadata\":{\"2354e0c5-f131-49ab-a055-8a6268577892\":{\"position\":{\"x\":478.40000000000003,\"y\":68.8},\"audio\":[]}}},\"Actions\":[{\"Parameters\":{\"Messages\":[{\"Media\":{\"Uri\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "mlcc76FCAE36",
+                          "WebsiteURL"
+                        ]
+                      },
+                      "/customerprompts/$.Attributes.ContactId$.Attributes.wav\",\"SourceType\":\"S3\",\"MediaType\":\"Audio\"}},{\"SSML\":\"<speak>\\n<break time=\\\"3s\\\"/>\\n</speak>\"}]},\"Identifier\":\"2354e0c5-f131-49ab-a055-8a6268577892\",\"Type\":\"MessageParticipantIteratively\",\"Transitions\":{}}]}"
+                    ]
+                  ]
+                },
+                "instanceArn": "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662",
+                "name": "mlcccustomerholdflow",
+                "type": "CUSTOMER_HOLD",
+                "description": "Multi Lingual Contact Center Customer Hold"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_connect.CfnContactFlow",
+              "version": "2.53.0"
+            }
+          },
+          "agentwhisperflow": {
+            "id": "agentwhisperflow",
+            "path": "mlcc/agentwhisperflow",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Connect::ContactFlow",
+              "aws:cdk:cloudformation:props": {
+                "content": "{\"Version\":\"2019-10-30\",\"StartAction\":\"222caecc-c107-4553-87fc-85a74c34bb06\",\"Metadata\":{\"entryPointPosition\":{\"x\":35,\"y\":17},\"snapToGrid\":false,\"ActionMetadata\":{\"95dc2179-0f18-4646-8e15-15377c9cbb29\":{\"position\":{\"x\":517,\"y\":645}},\"e9db6800-4cc9-49d9-8cc0-9f6de835c3db\":{\"position\":{\"x\":261,\"y\":448},\"dynamicParams\":[]},\"d7b827de-9a0c-414c-81ba-00e55c3a5991\":{\"position\":{\"x\":30,\"y\":224},\"fromCustomer\":true,\"toCustomer\":false},\"222caecc-c107-4553-87fc-85a74c34bb06\":{\"position\":{\"x\":170,\"y\":26},\"useDynamic\":false},\"6ea4e539-5982-41c7-a0aa-e82c9fe45cf6\":{\"position\":{\"x\":409,\"y\":12},\"dynamicParams\":[\"languageCode\"]},\"85367e82-3afe-49c1-8bc6-5f6548a81794\":{\"position\":{\"x\":753,\"y\":227},\"dynamicParams\":[]},\"74b62683-fcac-47dd-91d4-90e38eaec358\":{\"position\":{\"x\":759,\"y\":425},\"dynamicParams\":[]},\"7a7e765b-cd97-4438-a57b-eb8b8601bd97\":{\"position\":{\"x\":261,\"y\":225},\"dynamicParams\":[]},\"a0589c4d-e446-48d6-b8dc-d2a5c30667b1\":{\"position\":{\"x\":485,\"y\":225},\"dynamicMetadata\":{},\"useDynamic\":false}}},\"Actions\":[{\"Identifier\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"Parameters\":{},\"Transitions\":{},\"Type\":\"EndFlowExecution\"},{\"Identifier\":\"e9db6800-4cc9-49d9-8cc0-9f6de835c3db\",\"Parameters\":{\"Attributes\":{\"startStreamingAudioStatus\":\"Failed\"}},\"Transitions\":{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"Errors\":[{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactAttributes\"},{\"Identifier\":\"d7b827de-9a0c-414c-81ba-00e55c3a5991\",\"Parameters\":{\"MediaStreamingState\":\"Enabled\",\"MediaStreamType\":\"Audio\",\"Participants\":[{\"ParticipantType\":\"Customer\",\"MediaDirections\":[\"From\"]}]},\"Transitions\":{\"NextAction\":\"7a7e765b-cd97-4438-a57b-eb8b8601bd97\",\"Errors\":[{\"NextAction\":\"e9db6800-4cc9-49d9-8cc0-9f6de835c3db\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactMediaStreamingBehavior\"},{\"Identifier\":\"222caecc-c107-4553-87fc-85a74c34bb06\",\"Parameters\":{\"Text\":\"$.Queue.Name\"},\"Transitions\":{\"NextAction\":\"6ea4e539-5982-41c7-a0aa-e82c9fe45cf6\",\"Errors\":[],\"Conditions\":[]},\"Type\":\"MessageParticipant\"},{\"Identifier\":\"6ea4e539-5982-41c7-a0aa-e82c9fe45cf6\",\"Parameters\":{\"Attributes\":{\"transcribeCall\":\"true\",\"languageCode\":\"$.Attributes.languageCode\"}},\"Transitions\":{\"NextAction\":\"d7b827de-9a0c-414c-81ba-00e55c3a5991\",\"Errors\":[{\"NextAction\":\"d7b827de-9a0c-414c-81ba-00e55c3a5991\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactAttributes\"},{\"Identifier\":\"85367e82-3afe-49c1-8bc6-5f6548a81794\",\"Parameters\":{\"Attributes\":{\"kvsTriggerLambdaResult\":\"Success\"}},\"Transitions\":{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"Errors\":[{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactAttributes\"},{\"Identifier\":\"74b62683-fcac-47dd-91d4-90e38eaec358\",\"Parameters\":{\"Attributes\":{\"kvsTriggerLambdaResult\":\"Error\"}},\"Transitions\":{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"Errors\":[{\"NextAction\":\"95dc2179-0f18-4646-8e15-15377c9cbb29\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactAttributes\"},{\"Identifier\":\"7a7e765b-cd97-4438-a57b-eb8b8601bd97\",\"Parameters\":{\"Attributes\":{\"startStreamingAudioStatus\":\"Success\"}},\"Transitions\":{\"NextAction\":\"a0589c4d-e446-48d6-b8dc-d2a5c30667b1\",\"Errors\":[{\"NextAction\":\"a0589c4d-e446-48d6-b8dc-d2a5c30667b1\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"UpdateContactAttributes\"},{\"Identifier\":\"a0589c4d-e446-48d6-b8dc-d2a5c30667b1\",\"Parameters\":{\"LambdaFunctionARN\":\"arn:aws:lambda:us-east-1:609079303877:function:HHSDemo-kvsConsumerTrigger-BnXBK2pxkaQY\",\"InvocationTimeLimitSeconds\":\"8\"},\"Transitions\":{\"NextAction\":\"85367e82-3afe-49c1-8bc6-5f6548a81794\",\"Errors\":[{\"NextAction\":\"74b62683-fcac-47dd-91d4-90e38eaec358\",\"ErrorType\":\"NoMatchingError\"}],\"Conditions\":[]},\"Type\":\"InvokeLambdaFunction\"}]}",
+                "instanceArn": "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662",
+                "name": "mlccaagentwhisperflow",
+                "type": "AGENT_WHISPER",
+                "description": "Multi Lingual Contact Center Agent Whisper Flow"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_connect.CfnContactFlow",
+              "version": "2.53.0"
+            }
+          },
+          "kvs": {
+            "id": "kvs",
+            "path": "mlcc/kvs",
+            "attributes": {
+              "aws:cdk:cloudformation:type": "AWS::Connect::ContactFlow",
+              "aws:cdk:cloudformation:props": {
+                "content": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "{\"Version\":\"2019-10-30\",\"StartAction\":\"856dd865-e5a0-49c6-aacc-55fe53c38a22\",\"Metadata\":{\"entryPointPosition\":{\"x\":20,\"y\":14.4},\"ActionMetadata\":{\"04aacf02-1a6a-4df8-9a3b-5cce1d6e25a4\":{\"position\":{\"x\":2102.4,\"y\":317.6}},\"919982d6-3066-49e5-afe5-619896781245\":{\"position\":{\"x\":1860.8000000000002,\"y\":256}},\"8cbf86d9-1578-426d-a1d7-e069e14638d8\":{\"position\":{\"x\":1336,\"y\":296.8},\"parameters\":{\"EventHooks\":{\"CustomerHold\":{\"displayName\":\"CustomerHold\"}}},\"contactFlow\":{\"text\":\"CustomerHold\",\"id\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "customerhold",
+                          "ContactFlowArn"
+                        ]
+                      },
+                      "\"},\"customerOrAgent\":true},\"a15140a4-9f7b-4506-aff1-6442d4d2c33d\":{\"position\":{\"x\":1574.4,\"y\":294.40000000000003},\"parameters\":{\"EventHooks\":{\"AgentHold\":{\"displayName\":\"AgentHoldPrompt\"}}},\"contactFlow\":{\"text\":\"AgentHoldPrompt\",\"id\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "agenthold",
+                          "ContactFlowArn"
+                        ]
+                      },
+                      "\"},\"customerOrAgent\":false},\"ef749801-72f5-4aa4-b28d-bd28ad8f052d\":{\"position\":{\"x\":545.6,\"y\":60.800000000000004},\"dynamicMetadata\":{}},\"856dd865-e5a0-49c6-aacc-55fe53c38a22\":{\"position\":{\"x\":198.4,\"y\":57.6}},\"53e6aa2b-e374-4ae6-bfc9-1285d2ac202f\":{\"position\":{\"x\":314.40000000000003,\"y\":614.4000000000001}},\"b34006f1-0ecd-4212-ba1f-d92ef2100170\":{\"position\":{\"x\":122.4,\"y\":232.8},\"overrideConsoleVoice\":false},\"07273109-a75a-4742-aaae-ce35603c31fc\":{\"position\":{\"x\":72.8,\"y\":426.40000000000003}},\"e7825b58-a9db-4935-9f83-e67a564176e8\":{\"position\":{\"x\":560,\"y\":300.8},\"parameters\":{\"Attributes\":{\"aid\":{\"useDynamic\":true},\"sak\":{\"useDynamic\":true},\"sst\":{\"useDynamic\":true}}},\"dynamicParams\":[\"aid\",\"sak\",\"sst\"]},\"b7fdc484-ccf5-44eb-b89d-a070c6c40212\":{\"position\":{\"x\":1090.4,\"y\":297.6},\"parameters\":{\"EventHooks\":{\"AgentWhisper\":{\"displayName\":\"HHSDemoagentWhisperKvsStreamingSampleFlow\"}}},\"contactFlow\":{\"text\":\"HHSDemoagentWhisperKvsStreamingSampleFlow\",\"id\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "agentwhisperflow",
+                          "ContactFlowArn"
+                        ]
+                      },
+                      "\"},\"customerOrAgent\":false},\"24e5d5ff-402d-416d-8d04-38020e7f0428\":{\"position\":{\"x\":844.8000000000001,\"y\":378.40000000000003},\"dynamicParams\":[]},\"6b73f6ad-d072-49bf-be59-8fa81d30036c\":{\"position\":{\"x\":892,\"y\":561.6},\"dynamicParams\":[]},\"734e0f77-8bde-4bdd-a736-056172561a73\":{\"position\":{\"x\":884,\"y\":752},\"dynamicParams\":[]},\"de044ae9-5056-4c9a-a96e-b4d5b6ac27fb\":{\"position\":{\"x\":580,\"y\":532},\"conditionMetadata\":[{\"id\":\"9091da42-7fa3-4975-95d0-7c662765795c\",\"value\":\"1\"},{\"id\":\"7b537085-c393-4160-905c-51016ef28d9d\",\"value\":\"2\"},{\"id\":\"c4458a8f-5e12-4edf-a31a-cec2ac3403a4\",\"value\":\"3\"},{\"id\":\"c87fd8e1-c561-4745-bfd0-73657f4872f2\",\"value\":\"4\"}]},\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\":{\"position\":{\"x\":1130.4,\"y\":-138.4},\"parameters\":{\"QueueId\":{\"displayName\":\"BasicQueue\"}},\"queue\":{\"text\":\"BasicQueue\"}},\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\":{\"position\":{\"x\":811.2,\"y\":-7.2},\"dynamicParams\":[]}}},\"Actions\":[{\"Parameters\":{},\"Identifier\":\"04aacf02-1a6a-4df8-9a3b-5cce1d6e25a4\",\"Type\":\"DisconnectParticipant\",\"Transitions\":{}},{\"Parameters\":{},\"Identifier\":\"919982d6-3066-49e5-afe5-619896781245\",\"Type\":\"TransferContactToQueue\",\"Transitions\":{\"NextAction\":\"04aacf02-1a6a-4df8-9a3b-5cce1d6e25a4\",\"Errors\":[{\"NextAction\":\"04aacf02-1a6a-4df8-9a3b-5cce1d6e25a4\",\"ErrorType\":\"QueueAtCapacity\"},{\"NextAction\":\"04aacf02-1a6a-4df8-9a3b-5cce1d6e25a4\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"EventHooks\":{\"CustomerHold\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "customerhold",
+                          "ContactFlowArn"
+                        ]
+                      },
+                      "\"}},\"Identifier\":\"8cbf86d9-1578-426d-a1d7-e069e14638d8\",\"Type\":\"UpdateContactEventHooks\",\"Transitions\":{\"NextAction\":\"a15140a4-9f7b-4506-aff1-6442d4d2c33d\",\"Errors\":[{\"NextAction\":\"a15140a4-9f7b-4506-aff1-6442d4d2c33d\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"EventHooks\":{\"AgentHold\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "customerhold",
+                          "ContactFlowArn"
+                        ]
+                      },
+                      "\"}},\"Identifier\":\"a15140a4-9f7b-4506-aff1-6442d4d2c33d\",\"Type\":\"UpdateContactEventHooks\",\"Transitions\":{\"NextAction\":\"919982d6-3066-49e5-afe5-619896781245\",\"Errors\":[{\"NextAction\":\"919982d6-3066-49e5-afe5-619896781245\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"LambdaFunctionARN\":\"arn:aws:lambda:us-east-1:609079303877:function:HHSDemo-initContactDetails-55CWtBD8GeA3\",\"InvocationTimeLimitSeconds\":\"8\"},\"Identifier\":\"ef749801-72f5-4aa4-b28d-bd28ad8f052d\",\"Type\":\"InvokeLambdaFunction\",\"Transitions\":{\"NextAction\":\"e7825b58-a9db-4935-9f83-e67a564176e8\",\"Errors\":[{\"NextAction\":\"e7825b58-a9db-4935-9f83-e67a564176e8\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"FlowLoggingBehavior\":\"Enabled\"},\"Identifier\":\"856dd865-e5a0-49c6-aacc-55fe53c38a22\",\"Type\":\"UpdateFlowLoggingBehavior\",\"Transitions\":{\"NextAction\":\"b34006f1-0ecd-4212-ba1f-d92ef2100170\"}},{\"Parameters\":{\"RecordingBehavior\":{\"RecordedParticipants\":[\"Agent\",\"Customer\"]}},\"Identifier\":\"53e6aa2b-e374-4ae6-bfc9-1285d2ac202f\",\"Type\":\"UpdateContactRecordingBehavior\",\"Transitions\":{\"NextAction\":\"ef749801-72f5-4aa4-b28d-bd28ad8f052d\"}},{\"Parameters\":{\"TextToSpeechVoice\":\"Matthew\"},\"Identifier\":\"b34006f1-0ecd-4212-ba1f-d92ef2100170\",\"Type\":\"UpdateContactTextToSpeechVoice\",\"Transitions\":{\"NextAction\":\"07273109-a75a-4742-aaae-ce35603c31fc\"}},{\"Parameters\":{\"Text\":\"Thank you for contacting us\"},\"Identifier\":\"07273109-a75a-4742-aaae-ce35603c31fc\",\"Type\":\"MessageParticipant\",\"Transitions\":{\"NextAction\":\"53e6aa2b-e374-4ae6-bfc9-1285d2ac202f\",\"Errors\":[{\"NextAction\":\"53e6aa2b-e374-4ae6-bfc9-1285d2ac202f\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"Attributes\":{\"transcribeCall\":\"true\",\"saveCallRecording\":\"true\",\"aid\":\"$.External.aid\",\"sak\":\"$.External.sak\",\"sst\":\"$.External.sst\"}},\"Identifier\":\"e7825b58-a9db-4935-9f83-e67a564176e8\",\"Type\":\"UpdateContactAttributes\",\"Transitions\":{\"NextAction\":\"de044ae9-5056-4c9a-a96e-b4d5b6ac27fb\",\"Errors\":[{\"NextAction\":\"de044ae9-5056-4c9a-a96e-b4d5b6ac27fb\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"EventHooks\":{\"AgentWhisper\":\"",
+                      {
+                        "Fn::GetAtt": [
+                          "agentwhisperflow",
+                          "ContactFlowArn"
+                        ]
+                      },
+                      "\"}},\"Identifier\":\"b7fdc484-ccf5-44eb-b89d-a070c6c40212\",\"Type\":\"UpdateContactEventHooks\",\"Transitions\":{\"NextAction\":\"8cbf86d9-1578-426d-a1d7-e069e14638d8\",\"Errors\":[{\"NextAction\":\"8cbf86d9-1578-426d-a1d7-e069e14638d8\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"Attributes\":{\"languageCode\":\"es-US\"}},\"Identifier\":\"24e5d5ff-402d-416d-8d04-38020e7f0428\",\"Type\":\"UpdateContactAttributes\",\"Transitions\":{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"Errors\":[{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"Attributes\":{\"languageCode\":\"ko-KR\"}},\"Identifier\":\"6b73f6ad-d072-49bf-be59-8fa81d30036c\",\"Type\":\"UpdateContactAttributes\",\"Transitions\":{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"Errors\":[{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"Attributes\":{\"languageCode\":\"fr-FR\"}},\"Identifier\":\"734e0f77-8bde-4bdd-a736-056172561a73\",\"Type\":\"UpdateContactAttributes\",\"Transitions\":{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"Errors\":[{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"StoreInput\":\"False\",\"InputTimeLimitSeconds\":\"5\",\"Text\":\"Press 1 for English,  2 for Spanish, 3 for Korean, press 4 for French\"},\"Identifier\":\"de044ae9-5056-4c9a-a96e-b4d5b6ac27fb\",\"Type\":\"GetParticipantInput\",\"Transitions\":{\"NextAction\":\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\",\"Conditions\":[{\"NextAction\":\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\",\"Condition\":{\"Operator\":\"Equals\",\"Operands\":[\"1\"]}},{\"NextAction\":\"24e5d5ff-402d-416d-8d04-38020e7f0428\",\"Condition\":{\"Operator\":\"Equals\",\"Operands\":[\"2\"]}},{\"NextAction\":\"6b73f6ad-d072-49bf-be59-8fa81d30036c\",\"Condition\":{\"Operator\":\"Equals\",\"Operands\":[\"3\"]}},{\"NextAction\":\"734e0f77-8bde-4bdd-a736-056172561a73\",\"Condition\":{\"Operator\":\"Equals\",\"Operands\":[\"4\"]}}],\"Errors\":[{\"NextAction\":\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\",\"ErrorType\":\"InputTimeLimitExceeded\"},{\"NextAction\":\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\",\"ErrorType\":\"NoMatchingCondition\"},{\"NextAction\":\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"QueueId\":\"arn:aws:connect:us-east-1:609079303877:instance/3121c0e4-0674-41f9-84f3-7cd9ac8dbb53/queue/c989b110-2ed3-41aa-9ead-67de76ca67b0\"},\"Identifier\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"Type\":\"UpdateContactTargetQueue\",\"Transitions\":{\"NextAction\":\"b7fdc484-ccf5-44eb-b89d-a070c6c40212\",\"Errors\":[{\"NextAction\":\"b7fdc484-ccf5-44eb-b89d-a070c6c40212\",\"ErrorType\":\"NoMatchingError\"}]}},{\"Parameters\":{\"Attributes\":{\"languageCode\":\"en-US\"}},\"Identifier\":\"8f76ffad-b7c2-4b71-8eb5-7d1e17c53a33\",\"Type\":\"UpdateContactAttributes\",\"Transitions\":{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"Errors\":[{\"NextAction\":\"3434e4a0-e2c1-4c3a-9f52-81ae81a852e2\",\"ErrorType\":\"NoMatchingError\"}]}}]}"
+                    ]
+                  ]
+                },
+                "instanceArn": "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662",
+                "name": "mlccKvsStream",
+                "type": "CONTACT_FLOW",
+                "description": "KVS Flow"
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_connect.CfnContactFlow",
+              "version": "2.53.0"
+            }
+          },
+          "lambda-layer": {
+            "id": "lambda-layer",
+            "path": "mlcc/lambda-layer",
+            "children": {
+              "Code": {
+                "id": "Code",
+                "path": "mlcc/lambda-layer/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "mlcc/lambda-layer/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.53.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "mlcc/lambda-layer/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.53.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "mlcc/lambda-layer/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::LayerVersion",
+                  "aws:cdk:cloudformation:props": {
+                    "content": {
+                      "s3Bucket": "cdk-hnb659fds-assets-329280318374-us-west-2",
+                      "s3Key": "7d36748ef52dddfb032d45c847b2631b5f0c9e2ab427d2fb6155559b07eefe18.zip"
+                    },
+                    "compatibleArchitectures": [
+                      "x86_64",
+                      "arm64"
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnLayerVersion",
+                  "version": "2.53.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.LayerVersion",
+              "version": "2.53.0"
+            }
+          },
+          "mlcc-function": {
+            "id": "mlcc-function",
+            "path": "mlcc/mlcc-function",
+            "children": {
+              "ServiceRole": {
+                "id": "ServiceRole",
+                "path": "mlcc/mlcc-function/ServiceRole",
+                "children": {
+                  "ImportServiceRole": {
+                    "id": "ImportServiceRole",
+                    "path": "mlcc/mlcc-function/ServiceRole/ImportServiceRole",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.53.0"
+                    }
+                  },
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "mlcc/mlcc-function/ServiceRole/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                      "aws:cdk:cloudformation:props": {
+                        "assumeRolePolicyDocument": {
+                          "Statement": [
+                            {
+                              "Action": "sts:AssumeRole",
+                              "Effect": "Allow",
+                              "Principal": {
+                                "Service": "lambda.amazonaws.com"
+                              }
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "managedPolicyArns": [
+                          {
+                            "Fn::Join": [
+                              "",
+                              [
+                                "arn:",
+                                {
+                                  "Ref": "AWS::Partition"
+                                },
+                                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+                              ]
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                      "version": "2.53.0"
+                    }
+                  },
+                  "DefaultPolicy": {
+                    "id": "DefaultPolicy",
+                    "path": "mlcc/mlcc-function/ServiceRole/DefaultPolicy",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "mlcc/mlcc-function/ServiceRole/DefaultPolicy/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                          "aws:cdk:cloudformation:props": {
+                            "policyDocument": {
+                              "Statement": [
+                                {
+                                  "Action": [
+                                    "connect:StartOutboundVoiceContact",
+                                    "connect:StartTaskContact",
+                                    "logs:CreateLogGroup",
+                                    "logs:CreateLogStream",
+                                    "logs:PutLogsEvents",
+                                    "mobiletargeting:SendMessages"
+                                  ],
+                                  "Effect": "Allow",
+                                  "Resource": [
+                                    "arn:aws:connect:us-west-2:329280318374:instance/*",
+                                    "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662/*",
+                                    "arn:aws:logs:us-west-2:329280318374:*",
+                                    "arn:aws:mobiletargeting:us-west-2:329280318374:apps/*"
+                                  ]
+                                }
+                              ],
+                              "Version": "2012-10-17"
+                            },
+                            "policyName": "mlccfunctionServiceRoleDefaultPolicy96C7D570",
+                            "roles": [
+                              {
+                                "Ref": "mlccfunctionServiceRole5FC96A9F"
+                              }
+                            ]
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                          "version": "2.53.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.Policy",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Role",
+                  "version": "2.53.0"
+                }
+              },
+              "Code": {
+                "id": "Code",
+                "path": "mlcc/mlcc-function/Code",
+                "children": {
+                  "Stage": {
+                    "id": "Stage",
+                    "path": "mlcc/mlcc-function/Code/Stage",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.AssetStaging",
+                      "version": "2.53.0"
+                    }
+                  },
+                  "AssetBucket": {
+                    "id": "AssetBucket",
+                    "path": "mlcc/mlcc-function/Code/AssetBucket",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
+                  "version": "2.53.0"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "mlcc/mlcc-function/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Function",
+                  "aws:cdk:cloudformation:props": {
+                    "code": {
+                      "s3Bucket": "cdk-hnb659fds-assets-329280318374-us-west-2",
+                      "s3Key": "7b1f3c122a53128c55239bc2e97800299bcce83e3fb7394b79ed0b35af5757ee.zip"
+                    },
+                    "role": {
+                      "Fn::GetAtt": [
+                        "mlccfunctionServiceRole5FC96A9F",
+                        "Arn"
+                      ]
+                    },
+                    "environment": {
+                      "variables": {
+                        "bucketname": {
+                          "Ref": "mlcc76FCAE36"
+                        },
+                        "cloudfronturl": "URL"
+                      }
+                    },
+                    "functionName": "mlcc-Transcribe-Polly",
+                    "handler": "referrals.lambda_handler",
+                    "layers": [
+                      {
+                        "Ref": "lambdalayerAEB0E7A7"
+                      }
+                    ],
+                    "runtime": "python3.9"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnFunction",
+                  "version": "2.53.0"
+                }
+              },
+              "amazon-connect-invocation": {
+                "id": "amazon-connect-invocation",
+                "path": "mlcc/mlcc-function/amazon-connect-invocation",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                  "aws:cdk:cloudformation:props": {
+                    "action": "lambda:InvokeFunction",
+                    "functionName": {
+                      "Fn::GetAtt": [
+                        "mlccfunctionC4C18706",
+                        "Arn"
+                      ]
+                    },
+                    "principal": "connect.amazonaws.com",
+                    "sourceArn": "arn:aws:connect:us-west-2:329280318374:instance/cbb7560b-1454-4239-b4b8-6eaebe51b662"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                  "version": "2.53.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_lambda.Function",
+              "version": "2.53.0"
+            }
+          },
+          "referrals-api-gateway": {
+            "id": "referrals-api-gateway",
+            "path": "mlcc/referrals-api-gateway",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "mlcc/referrals-api-gateway/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ApiGateway::RestApi",
+                  "aws:cdk:cloudformation:props": {
+                    "name": "mlcc-placecall-api"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.CfnRestApi",
+                  "version": "2.53.0"
+                }
+              },
+              "Deployment": {
+                "id": "Deployment",
+                "path": "mlcc/referrals-api-gateway/Deployment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "mlcc/referrals-api-gateway/Deployment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Deployment",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "referralsapigateway92A53BC5"
+                        },
+                        "description": "Automatically created by the RestApi construct"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnDeployment",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Deployment",
+                  "version": "2.53.0"
+                }
+              },
+              "DeploymentStage.prod": {
+                "id": "DeploymentStage.prod",
+                "path": "mlcc/referrals-api-gateway/DeploymentStage.prod",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "mlcc/referrals-api-gateway/DeploymentStage.prod/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ApiGateway::Stage",
+                      "aws:cdk:cloudformation:props": {
+                        "restApiId": {
+                          "Ref": "referralsapigateway92A53BC5"
+                        },
+                        "deploymentId": {
+                          "Ref": "referralsapigatewayDeployment2F20BACBa377609bbf61abc4d8fb533bc80c8a90"
+                        },
+                        "stageName": "prod"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.CfnStage",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.Stage",
+                  "version": "2.53.0"
+                }
+              },
+              "Endpoint": {
+                "id": "Endpoint",
+                "path": "mlcc/referrals-api-gateway/Endpoint",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnOutput",
+                  "version": "2.53.0"
+                }
+              },
+              "Default": {
+                "id": "Default",
+                "path": "mlcc/referrals-api-gateway/Default",
+                "children": {
+                  "{proxy+}": {
+                    "id": "{proxy+}",
+                    "path": "mlcc/referrals-api-gateway/Default/{proxy+}",
+                    "children": {
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "mlcc/referrals-api-gateway/Default/{proxy+}/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Resource",
+                          "aws:cdk:cloudformation:props": {
+                            "parentId": {
+                              "Fn::GetAtt": [
+                                "referralsapigateway92A53BC5",
+                                "RootResourceId"
+                              ]
+                            },
+                            "pathPart": "{proxy+}",
+                            "restApiId": {
+                              "Ref": "referralsapigateway92A53BC5"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnResource",
+                          "version": "2.53.0"
+                        }
+                      },
+                      "ANY": {
+                        "id": "ANY",
+                        "path": "mlcc/referrals-api-gateway/Default/{proxy+}/ANY",
+                        "children": {
+                          "ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}": {
+                            "id": "ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}",
+                            "path": "mlcc/referrals-api-gateway/Default/{proxy+}/ANY/ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "mlccfunctionC4C18706",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:aws:execute-api:us-west-2:329280318374:",
+                                      {
+                                        "Ref": "referralsapigateway92A53BC5"
+                                      },
+                                      "/",
+                                      {
+                                        "Ref": "referralsapigatewayDeploymentStageprodCB9CB861"
+                                      },
+                                      "/*/*"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.53.0"
+                            }
+                          },
+                          "ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}": {
+                            "id": "ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}",
+                            "path": "mlcc/referrals-api-gateway/Default/{proxy+}/ANY/ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..{proxy+}",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                              "aws:cdk:cloudformation:props": {
+                                "action": "lambda:InvokeFunction",
+                                "functionName": {
+                                  "Fn::GetAtt": [
+                                    "mlccfunctionC4C18706",
+                                    "Arn"
+                                  ]
+                                },
+                                "principal": "apigateway.amazonaws.com",
+                                "sourceArn": {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:aws:execute-api:us-west-2:329280318374:",
+                                      {
+                                        "Ref": "referralsapigateway92A53BC5"
+                                      },
+                                      "/test-invoke-stage/*/*"
+                                    ]
+                                  ]
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                              "version": "2.53.0"
+                            }
+                          },
+                          "Resource": {
+                            "id": "Resource",
+                            "path": "mlcc/referrals-api-gateway/Default/{proxy+}/ANY/Resource",
+                            "attributes": {
+                              "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                              "aws:cdk:cloudformation:props": {
+                                "httpMethod": "ANY",
+                                "resourceId": {
+                                  "Ref": "referralsapigatewayproxyCE5006C2"
+                                },
+                                "restApiId": {
+                                  "Ref": "referralsapigateway92A53BC5"
+                                },
+                                "authorizationType": "NONE",
+                                "integration": {
+                                  "type": "AWS_PROXY",
+                                  "uri": {
+                                    "Fn::Join": [
+                                      "",
+                                      [
+                                        "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/",
+                                        {
+                                          "Fn::GetAtt": [
+                                            "mlccfunctionC4C18706",
+                                            "Arn"
+                                          ]
+                                        },
+                                        "/invocations"
+                                      ]
+                                    ]
+                                  },
+                                  "integrationHttpMethod": "POST"
+                                }
+                              }
+                            },
+                            "constructInfo": {
+                              "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                              "version": "2.53.0"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                          "version": "2.53.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.ProxyResource",
+                      "version": "2.53.0"
+                    }
+                  },
+                  "ANY": {
+                    "id": "ANY",
+                    "path": "mlcc/referrals-api-gateway/Default/ANY",
+                    "children": {
+                      "ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..": {
+                        "id": "ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..",
+                        "path": "mlcc/referrals-api-gateway/Default/ANY/ApiPermission.mlccreferralsapigatewayD8EC84B5.ANY..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "mlccfunctionC4C18706",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:aws:execute-api:us-west-2:329280318374:",
+                                  {
+                                    "Ref": "referralsapigateway92A53BC5"
+                                  },
+                                  "/",
+                                  {
+                                    "Ref": "referralsapigatewayDeploymentStageprodCB9CB861"
+                                  },
+                                  "/*/"
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                          "version": "2.53.0"
+                        }
+                      },
+                      "ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..": {
+                        "id": "ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..",
+                        "path": "mlcc/referrals-api-gateway/Default/ANY/ApiPermission.Test.mlccreferralsapigatewayD8EC84B5.ANY..",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::Lambda::Permission",
+                          "aws:cdk:cloudformation:props": {
+                            "action": "lambda:InvokeFunction",
+                            "functionName": {
+                              "Fn::GetAtt": [
+                                "mlccfunctionC4C18706",
+                                "Arn"
+                              ]
+                            },
+                            "principal": "apigateway.amazonaws.com",
+                            "sourceArn": {
+                              "Fn::Join": [
+                                "",
+                                [
+                                  "arn:aws:execute-api:us-west-2:329280318374:",
+                                  {
+                                    "Ref": "referralsapigateway92A53BC5"
+                                  },
+                                  "/test-invoke-stage/*/"
+                                ]
+                              ]
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_lambda.CfnPermission",
+                          "version": "2.53.0"
+                        }
+                      },
+                      "Resource": {
+                        "id": "Resource",
+                        "path": "mlcc/referrals-api-gateway/Default/ANY/Resource",
+                        "attributes": {
+                          "aws:cdk:cloudformation:type": "AWS::ApiGateway::Method",
+                          "aws:cdk:cloudformation:props": {
+                            "httpMethod": "ANY",
+                            "resourceId": {
+                              "Fn::GetAtt": [
+                                "referralsapigateway92A53BC5",
+                                "RootResourceId"
+                              ]
+                            },
+                            "restApiId": {
+                              "Ref": "referralsapigateway92A53BC5"
+                            },
+                            "authorizationType": "NONE",
+                            "integration": {
+                              "type": "AWS_PROXY",
+                              "uri": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:aws:apigateway:us-west-2:lambda:path/2015-03-31/functions/",
+                                    {
+                                      "Fn::GetAtt": [
+                                        "mlccfunctionC4C18706",
+                                        "Arn"
+                                      ]
+                                    },
+                                    "/invocations"
+                                  ]
+                                ]
+                              },
+                              "integrationHttpMethod": "POST"
+                            }
+                          }
+                        },
+                        "constructInfo": {
+                          "fqn": "aws-cdk-lib.aws_apigateway.CfnMethod",
+                          "version": "2.53.0"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_apigateway.Method",
+                      "version": "2.53.0"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_apigateway.ResourceBase",
+                  "version": "2.53.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_apigateway.LambdaRestApi",
+              "version": "2.53.0"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "mlcc/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "mlcc/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.53.0"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.1.252"
+            }
+          },
+          "BootstrapVersion": {
+            "id": "BootstrapVersion",
+            "path": "mlcc/BootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.53.0"
+            }
+          },
+          "CheckBootstrapVersion": {
+            "id": "CheckBootstrapVersion",
+            "path": "mlcc/CheckBootstrapVersion",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnRule",
+              "version": "2.53.0"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.53.0"
+        }
+      },
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.1.252"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.53.0"
+    }
+  }
+}
