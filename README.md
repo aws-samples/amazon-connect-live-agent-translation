@@ -54,8 +54,11 @@ The steps below will guide you through the process of deploying a multilingual c
 6. Create the stack.
 7. After the stack is successfully launched, note the following outputs. It could take a few minutes for the stack to launch the solution.
     1. **cloudfrontEndpoint** – This is the CloudFront URL you will use to access the agent portal. You can find this in the **Output** tab for the stack.
-8. Create a lambda layer by cloning and following up the instructions on the following repository  <https://github.com/amazon-connect/amazon-connect-audio-utils/tree/master>  Keep in mind that docker is required for this step. 
-9. Add the layer to the lambda function with the following name mlcc-Transcribe-Polly
+8. Create a lambda layer by cloning and following the instruction in the [repo](https://github.com/amazon-connect/amazon-connect-audio-utils/tree/master).
+    * Docker install is needed to run through the instructions in this step. Please ignore warnings/errors that show up while running the commands in the repo.
+    * This step will create the lambda layer that you can add to your Lambda Function in your AWS account.
+9. Add the layer to the lambda function    named mlcc-Transcribe-Polly.
+    * Use the “Specify arn” option to choose the layer you deployed in step 8.
 
 
 
